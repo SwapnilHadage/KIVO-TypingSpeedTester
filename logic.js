@@ -9,7 +9,7 @@ let cursor = document.createElement("span");
 cursor.classList.add("cursor");
 cursor.classList.add("stop");
 const wordEndChars = ['\u00A0', '.', ',', ';', ':', '!', '?', '"', "'", '(', ')', '{', '}', '[', ']', '/'];
-let mode = "moderate";
+let mode = "easy";
 let sentence;
 let spans = [];
 let firstInput;
@@ -64,8 +64,6 @@ selector.addEventListener("change", ()=>{
 })
 
 function startTest(){
-  console.log("entered startTest");
-  
   if(firstInput){
     startTimer(duration, selectedBtn, freeStyle);
     firstInput = false;
@@ -86,7 +84,6 @@ function startTest(){
   
   if(sentence[prevLen] && sentence[prevLen] === " "){
     ++words;
-    console.log("start test words",words);
     }
     
   if( typedChar === spans[prevLen].textContent){
@@ -177,13 +174,14 @@ function showResult(words, time, correctLetterCount, len){
   speed.innerText = `Speed: ${(words*60/(time)).toFixed(2)}wpm`;
   console.log(speed.innerText);
 
-  accuracy.innerText = `Accuracy:  ${(correctLetterCount*100/len).toFixed(2)}%`;
+  accuracy.innerText = `Accuracy: ${(correctLetterCount*100/len).toFixed(2)}%`;
   console.log(accuracy.innerText);
     
   }
 
 function setInitialState (FreeStyle){
-
+  console.log(mode);
+  
   //Reset Events
   typeArea.removeEventListener("click", begin);
   userText.removeEventListener("input", startTest);

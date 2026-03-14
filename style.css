@@ -133,11 +133,15 @@ main{
   height: 30ch;
   position: relative;
   user-select: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center ;
   overflow-wrap: break-word;
   overflow-y: auto;
   overflow-x: hidden;
   border: solid 0.18rem black;
-  border-radius: 10px; 
+  border-radius: 10px;
   padding: clamp(1rem, 3vw,2rem);
   z-index: 1;
 }
